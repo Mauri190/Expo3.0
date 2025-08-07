@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoManager - Gestión de Vehículos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-car-front-fill"></i> AutoManager
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#dashboard">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#agenda">Agenda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gamificacion">Gamificación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#repuestos">Repuestos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#formulario">Mis Vehículos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#telefonos">Emergencias</a></li>
+                </ul>
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                        <i class="bi bi-gear"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#ajustes"><i class="bi bi-sliders"></i> Ajustes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        <!-- Dashboard principal -->
+        <div id="dashboard">
+            <h2 class="mb-4 text-center">Bienvenido a AutoManager</h2>
+            <p class="lead text-center mb-5">Tu asistente personal para el cuidado del vehículo</p>
+
+            <!-- Bloques funcionales -->
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-block" onclick="showSection('agenda')">
+                        <div class="block-icon bg-calendar">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <h3>Agenda</h3>
+                        <p>Gestiona tus citas de mantenimiento y recordatorios</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-block" onclick="showSection('gamificacion')">
+                        <div class="block-icon bg-game">
+                            <i class="bi bi-joystick"></i>
+                        </div>
+                        <h3>Gamificación</h3>
+                        <p>Aprende sobre vehículos jugando</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-block" onclick="showSection('mapa')">
+                        <div class="block-icon bg-map">
+                            <i class="bi bi-map"></i>
+                        </div>
+                        <h3>Mapa</h3>
+                        <p>Encuentra talleres y estaciones de servicio</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-block" onclick="showSection('repuestos')">
+                        <div class="block-icon bg-parts">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h3>Repuestos</h3>
+                        <p>Catálogo de repuestos y accesorios</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-block" onclick="showSection('formulario')">
+                        <div class="block-icon bg-form">
+                            <i class="bi bi-clipboard-data"></i>
+                        </div>
+                        <h3>Mis Vehículos</h3>
+                        <p>Registra la información de tus automóviles</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-block" onclick="showSection('telefonos')">
+                        <div class="block-icon bg-phone">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <h3>Emergencias</h3>
+                        <p>Contactos de emergencia y asistencia vial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secciones de contenido -->
+        <!-- Sección de Agenda -->
+        <section id="agenda" class="content-section" style="display: none;">
+            <div class="section-header">
+                <button class="btn btn-back" onclick="hideSection('agenda')">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </button>
+                <h2><i class="bi bi-calendar-check"></i> Agenda</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <button class="btn btn-sm btn-outline-primary prev-month">&lt;</button>
+                            <h4 class="month-year">Julio 2023</h4>
+                            <button class="btn btn-sm btn-outline-primary next-month">&gt;</button>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td><td></td><td></td><td></td><td></td><td></td><td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+                                </tr>
+                                <tr>
+                                    <td>30</td><td>31</td><td></td><td></td><td></td><td></td><td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Lista de eventos próximos -->
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5>Eventos próximos</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group" id="upcomingEvents">
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Cambio de aceite</h6>
+                                        <small class="text-muted">15/07/2023 - 10:00 AM</small>
+                                    </div>
+                                    <p class="mb-1">Taller: Mecánica Automotriz XYZ</p>
+                                    <small class="text-muted">Vehículo: Toyota Corolla</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Inspección técnica</h6>
+                                        <small class="text-muted">20/07/2023 - 02:00 PM</small>
+                                    </div>
+                                    <p class="mb-1">Centro de inspección oficial</p>
+                                    <small class="text-muted">Vehículo: Nissan Sentra</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Nueva cita</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="appointmentForm">
+                                <div class="mb-3">
+                                    <label for="appointmentVehicle" class="form-label">Vehículo</label>
+                                    <select class="form-select" id="appointmentVehicle" required>
+                                        <option value="">Seleccionar vehículo...</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointmentDate" class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" id="appointmentDate" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointmentTime" class="form-label">Hora</label>
+                                    <input type="time" class="form-control" id="appointmentTime" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointmentType" class="form-label">Tipo de servicio</label>
+                                    <select class="form-select" id="appointmentType" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="mantenimiento">Mantenimiento regular</option>
+                                        <option value="reparacion">Reparación</option>
+                                        <option value="lavado">Lavado y detailing</option>
+                                        <option value="inspeccion">Inspección técnica</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointmentLocation" class="form-label">Taller/Ubicación</label>
+                                    <input type="text" class="form-control" id="appointmentLocation" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointmentNotes" class="form-label">Notas</label>
+                                    <textarea class="form-control" id="appointmentNotes" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="bi bi-calendar-plus"></i> Agendar cita
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Gamificación -->
+        <section id="gamificacion" class="content-section" style="display: none;">
+            <div class="section-header">
+                <button class="btn btn-back" onclick="hideSection('gamificacion')">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </button>
+                <h2><i class="bi bi-joystick"></i> Gamificación</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="game-card" onclick="startGame('quiz')">
+                        <div class="game-icon bg-quiz">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+                        <h4>Quiz de Vehículos</h4>
+                        <p>Pon a prueba tus conocimientos sobre mantenimiento</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="game-card" onclick="startGame('memory')">
+                        <div class="game-icon bg-memory">
+                            <i class="bi bi-card-checklist"></i>
+                        </div>
+                        <h4>Memorama de Partes</h4>
+                        <p>Encuentra las parejas de partes del vehículo</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="game-card" onclick="startGame('dragdrop')">
+                        <div class="game-icon bg-dragdrop">
+                            <i class="bi bi-arrow-down-up"></i>
+                        </div>
+                        <h4>Arma el Motor</h4>
+                        <p>Coloca las piezas en el lugar correcto</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="game-card" onclick="startGame('wordsearch')">
+                        <div class="game-icon bg-wordsearch">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h4>Sopa de Letras</h4>
+                        <p>Encuentra términos automotrices</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="game-card" onclick="startGame('simulator')">
+                        <div class="game-icon bg-simulator">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        <h4>Simulador de Mantenimiento</h4>
+                        <p>Realiza tareas de mantenimiento virtual</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="game-card" onclick="startGame('trivia')">
+                        <div class="game-icon bg-trivia">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h4>Trivia Automotriz</h4>
+                        <p>Responde preguntas contra reloj</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Juego de Quiz -->
+            <div id="quizGame" class="game-container" style="display: none;">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Quiz de Vehículos</h5>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="closeGame('quiz')">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="quizContainer">
+                            <div class="progress mb-3">
+                                <div id="quizProgress" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <h6 id="quizQuestion"></h6>
+                            <div class="quiz-options mt-3" id="quizOptions"></div>
+                            <button class="btn btn-primary mt-3 w-100" id="nextQuestion">Siguiente</button>
+                        </div>
+                        <div id="quizResults" style="display: none;">
+                            <div class="text-center py-4">
+                                <i class="bi bi-trophy-fill text-warning" style="font-size: 3rem;"></i>
+                                <h4 class="mt-3">¡Quiz completado!</h4>
+                                <p>Tu puntuación: <span id="quizScore" class="fw-bold">0</span>/<span id="quizTotal">0</span></p>
+                                <div id="quizFeedback"></div>
+                                <div class="d-grid gap-2 mt-4">
+                                    <button class="btn btn-primary" onclick="retryQuiz()">Intentar de nuevo</button>
+                                    <button class="btn btn-outline-secondary" onclick="closeGame('quiz')">Volver a juegos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Juego de Memorama -->
+            <div id="memoryGame" class="game-container" style="display: none;">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Memorama de Partes</h5>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="closeGame('memory')">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>Intentos: <span id="memoryAttempts">0</span></div>
+                            <div>Pares encontrados: <span id="memoryMatches">0</span>/8</div>
+                        </div>
+                        <div class="memory-board" id="memoryBoard"></div>
+                        <div id="memoryResults" style="display: none;" class="text-center py-4">
+                            <i class="bi bi-stars text-warning" style="font-size: 3rem;"></i>
+                            <h4 class="mt-3">¡Felicidades!</h4>
+                            <p>Completaste el memorama en <span id="finalAttempts" class="fw-bold">0</span> intentos</p>
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-primary" onclick="setupMemoryGame()">Jugar de nuevo</button>
+                                <button class="btn btn-outline-secondary" onclick="closeGame('memory')">Volver a juegos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Juego de Arrastrar y Soltar -->
+            <div id="dragdropGame" class="game-container" style="display: none;">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Arma el Motor</h5>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="closeGame('dragdrop')">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="dragdropContainer">
+                            <p class="text-center">Arrastra cada pieza a su lugar correcto en el motor</p>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h6 class="text-center mb-3">Piezas</h6>
+                                    <div class="dragdrop-pieces" id="dragdropPieces"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-center mb-3">Motor</h6>
+                                    <div class="dragdrop-target" id="dragdropTarget"></div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary" id="checkDragdrop">Verificar</button>
+                                <div id="dragdropFeedback" class="mt-3"></div>
+                            </div>
+                        </div>
+                        <div id="dragdropResults" style="display: none;" class="text-center py-4">
+                            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+                            <h4 class="mt-3">¡Motor ensamblado correctamente!</h4>
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-primary" onclick="setupDragdropGame()">Jugar de nuevo</button>
+                                <button class="btn btn-outline-secondary" onclick="closeGame('dragdrop')">Volver a juegos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Juego de Sopa de Letras -->
+            <div id="wordsearchGame" class="game-container" style="display: none;">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Sopa de Letras Automotriz</h5>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="closeGame('wordsearch')">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="wordsearchContainer">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>Palabras encontradas: <span id="wordsFound">0</span>/<span id="totalWords">0</span></div>
+                                <button class="btn btn-sm btn-outline-primary" onclick="showWordsearchWords()">Mostrar palabras</button>
+                            </div>
+                            <div class="wordsearch-grid" id="wordsearchGrid"></div>
+                            <div class="wordsearch-words" id="wordsearchWords"></div>
+                        </div>
+                        <div id="wordsearchResults" style="display: none;" class="text-center py-4">
+                            <i class="bi bi-emoji-smile-fill text-warning" style="font-size: 3rem;"></i>
+                            <h4 class="mt-3">¡Sopa de letras completada!</h4>
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-primary" onclick="setupWordsearchGame()">Jugar de nuevo</button>
+                                <button class="btn btn-outline-secondary" onclick="closeGame('wordsearch')">Volver a juegos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Mapa -->
+        <section id="mapa" class="content-section" style="display: none;">
+            <div class="section-header">
+                <button class="btn btn-back" onclick="hideSection('mapa')">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </button>
+                <h2><i class="bi bi-map"></i> Mapa</h2>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body p-0">
+                    <div id="googleMap" style="height: 500px; width: 100%;"></div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Buscar ubicación</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="searchLocation" placeholder="Ej: Taller mecánico, gasolinera...">
+                                <button class="btn btn-primary" type="button" id="searchMap">
+                                    <i class="bi bi-search"></i> Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Opciones del mapa</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="trafficToggle">
+                                <label class="form-check-label" for="trafficToggle">Mostrar tráfico</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="placesToggle">
+                                <label class="form-check-label" for="placesToggle">Mostrar talleres cercanos</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Repuestos -->
+        <section id="repuestos" class="content-section" style="display: none;">
+            <div class="section-header">
+                <button class="btn btn-back" onclick="hideSection('repuestos')">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </button>
+                <h2><i class="bi bi-tools"></i> Repuestos</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-img-top bg-light p-4 text-center">
+                            <i class="bi bi-battery-full" style="font-size: 3rem; color: #4361ee;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Batería Nissan</h5>
+                            <p class="card-text text-muted">Modelo: NP100</p>
+                            <p class="card-text"><span class="badge bg-success">En stock</span></p>
+                            <h5 class="mt-3">$75.00</h5>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-img-top bg-light p-4 text-center">
+                            <i class="bi bi-brake-pad" style="font-size: 3rem; color: #4361ee;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Discos de Freno</h5>
+                            <p class="card-text text-muted">Para sedanes medianos</p>
+                            <p class="card-text"><span class="badge bg-success">En stock</span></p>
+                            <h5 class="mt-3">$67.00</h5>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-img-top bg-light p-4 text-center">
+                            <i class="bi bi-fan" style="font-size: 3rem; color: #4361ee;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Filtro de Aire</h5>
+                            <p class="card-text text-muted">Universal</p>
+                            <p class="card-text"><span class="badge bg-success">En stock</span></p>
+                            <h5 class="mt-3">$25.00</h5>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-img-top bg-light p-4 text-center">
+                            <i class="bi bi-droplet" style="font-size: 3rem; color: #4361ee;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Aceite de Motor</h5>
+                            <p class="card-text text-muted">10W-40 Sintético</p>
+                            <p class="card-text"><span class="badge bg-success">En stock</span></p>
+                            <h5 class="mt-3">$12.00</h5>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Carrito de compras</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartItems">
+                                    <tr>
+                                        <td colspan="5" class="text-center">No hay productos en el carrito</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="3">Total</th>
+                                        <th id="cartTotal">$0.00</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <button class="btn btn-success w-100 mt-3" disabled id="checkoutBtn">
+                            <i class="bi bi-credit-card"></i> Proceder al pago
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Formulario de Vehículo -->
+        <section id="formulario" class="content-section" style="display: none;">
+            <div class="section-header">
+                <button class="btn btn-back" onclick="hideSection('formulario')">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </button>
+                <h2><i class="bi bi-car-front"></i> Mis Vehículos</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5>Agregar nuevo vehículo</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="vehicleForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="vehicleBrand" class="form-label">Marca</label>
+                                        <select class="form-select" id="vehicleBrand" required>
+                                            <option value="" selected disabled>Seleccionar...</option>
+                                            <option value="Toyota">Toyota</option>
+                                            <option value="Nissan">Nissan</option>
+                                            <option value="Honda">Honda</option>
+                                            <option value="Hyundai">Hyundai</option>
+                                            <option value="Ford">Ford</option>
+                                            <option value="Chevrolet">Chevrolet</option>
+                                            <option value="Kia">Kia</option>
+                                            <option value="Mazda">Mazda</option>
+                                            <option value="Volkswagen">Volkswagen</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="vehicleModel" class="form-label">Modelo</label>
+                                        <input type="text" class="form-control" id="vehicleModel" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="plateNumber" class="form-label">Número de placa</label>
+                                        <input type="text" class="form-control" id="plateNumber" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="vehicleYear" class="form-label">Año</label>
+                                        <input type="number" class="form-control" id="vehicleYear" min="1900" max="2023" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="currentMileage" class="form-label">Kilometraje actual</label>
+                                    <input type="number" class="form-control" id="currentMileage" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="vehicleColor" class="form-label">Color</label>
+                                    <input type="text" class="form-control" id="vehicleColor">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="vehicleCondition" class="form-label">Estado general</label>
+                                    <select class="form-select" id="vehicleCondition" required>
+                                        <option value="" selected disabled>Seleccionar...</option>
+                                        <option value="excelente">Excelente</option>
+                                        <option value="bueno">Bueno</option>
+                                        <option value="regular">Regular</option>
+                                        <option value="malo">Malo</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="additionalNotes" class="form-label">Notas adicionales</label>
+                                    <textarea class="form-control" id="additionalNotes" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save"></i> Guardar vehículo
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5>Mis vehículos</h5>
+                            <span class="badge bg-primary" id="vehicleCount">0</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group" id="vehicleList">
+                                <div class="list-group-item text-center text-muted">
+                                    No hay vehículos registrados
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5>Historial de mantenimiento</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group" id="maintenanceHistory">
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Cambio de aceite</h6>
+                                        <small>15/06/2023</small>
+                                    </div>
+                                    <p class="mb-1">Taller: Mecánica Automotriz XYZ</p>
+                                    <small>Kilometraje: 45,000 km - Vehículo: Toyota Corolla</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Rotación de llantas</h6>
+                                        <small>10/05/2023</small>
+                                    </div>
+                                    <p class="mb-1">Taller: ServiLlantas</p>
+                                    <small>Kilometraje: 42,500 km - Vehículo: Toyota Corolla</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Revisión general</h6>
+                                        <small>20/03/2023</small>
+                                    </div>
+                                    <p class="mb-1">Taller: Mecánica Automotriz XYZ</p>
+                                    <small>Kilometraje: 40,000 km - Vehículo: Toyota Corolla</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Teléfonos de emergencia -->
+        <section id="telefonos" class="content-section" style="display: none;">
+            <div class="section-header">
+                <button class="btn btn-back" onclick="hideSection('telefonos')">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </button>
+                <h2><i class="bi bi-telephone"></i> Teléfonos de emergencia</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="emergency-icon bg-danger">
+                                <i class="bi bi-shield-exclamation"></i>
+                            </div>
+                            <h4 class="mt-3">Policía Nacional Civil</h4>
+                            <p class="text-muted">Emergencias generales</p>
+                            <h3 class="my-3">911</h3>
+                            <a href="tel:911" class="btn btn-danger w-100">
+                                <i class="bi bi-telephone"></i> Llamar ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="emergency-icon bg-primary">
+                                <i class="bi bi-ambulance"></i>
+                            </div>
+                            <h4 class="mt-3">Sistema de Emergencias Médicas</h4>
+                            <p class="text-muted">Ambulancias y primeros auxilios</p>
+                            <h3 class="my-3">132</h3>
+                            <a href="tel:132" class="btn btn-primary w-100">
+                                <i class="bi bi-telephone"></i> Llamar ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="emergency-icon bg-success">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <h4 class="mt-3">Cruz Verde Salvadoreña</h4>
+                            <p class="text-muted">Asistencia médica</p>
+                            <h3 class="my-3">2284-5792</h3>
+                            <a href="tel:22845792" class="btn btn-success w-100">
+                                <i class="bi bi-telephone"></i> Llamar ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="emergency-icon bg-warning text-dark">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <h4 class="mt-3">Grúa de emergencia</h4>
+                            <p class="text-muted">Asistencia vial las 24 horas</p>
+                            <h3 class="my-3">2510-0199</h3>
+                            <a href="tel:25100199" class="btn btn-warning w-100">
+                                <i class="bi bi-telephone"></i> Llamar ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contactos personalizados -->
+            <div class="mt-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Mis contactos de emergencia</h5>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addEmergencyModal">
+                            <i class="bi bi-plus"></i> Agregar
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group" id="customEmergencyList">
+                            <div class="list-group-item text-center text-muted">
+                                No has agregado contactos personalizados
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para agregar contacto de emergencia -->
+    <div class="modal fade" id="addEmergencyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar contacto de emergencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="emergencyContactForm">
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="contactPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactType" class="form-label">Tipo de contacto</label>
+                            <select class="form-select" id="contactType" required>
+                                <option value="mecanico">Mecánico de confianza</option>
+                                <option value="seguro">Seguro del vehículo</option>
+                                <option value="familiar">Familiar</option>
+                                <option value="amigo">Amigo</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactNotes" class="form-label">Notas</label>
+                            <textarea class="form-control" id="contactNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveEmergencyContact()">Guardar contacto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-car-front-fill"></i> AutoManager</h5>
+                    <p>La mejor aplicación para la gestión y mantenimiento de tu vehículo.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#agenda" class="text-white">Agenda</a></li>
+                        <li><a href="#repuestos" class="text-white">Repuestos</a></li>
+                        <li><a href="#telefonos" class="text-white">Emergencias</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <p><i class="bi bi-envelope"></i> contacto@automanager.com</p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>&copy; 2023 AutoManager. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script>
+    <script src="script.js"></script>
+</body>
+</html>
